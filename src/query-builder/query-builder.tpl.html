@@ -1,0 +1,67 @@
+<div>
+    <div>
+        <button ng-show="config.date && config.date.thisWeek"class="btn btn-large btn-block btn-success" ng-click="thisWeek()">This Week</button>
+        <button ng-show="config.date && config.date.lastWeek"class="btn btn-large btn-block btn-success" ng-click="lastWeek()">Last Week</button>
+    </div>
+    <br>
+    <form name="queryBuilder">
+        <div class="form-group">
+            <select name="key"
+                    ng-model="currentClause.property"
+                    ng-options="property as property.name for property in options.properties" class="form-control"
+                    ng-change="propertySelected(currentClause.property)"
+                    style="width: 100%; margin-right: 10px;" required>
+                <option value="">Select Property</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <select name="comparator"
+                    ng-model="currentClause.comparator"
+                    ng-options="comparator as comparator.name for comparator in currentComparators"
+                    class="form-control"
+                    style="width: 100%; margin-right: 10px;" required>
+                <option value="">Select Comparator</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <input name="text" type="text" ng-model="currentClause.value"class="form-control clause-text-field" ng-hide="hideValueTextBox">
+        </div>
+
+        <button type="submit" ng-click="addToQuery()" class="btn btn-default btn-block" ng-disabled="!queryBuilder.$valid" ng-hide="loading">Add Query</button>
+    </form>
+
+    <br>
+
+    <table>
+        <tr ng-repeat="clause in query">
+            <td><i class="fa fa-minus-circle remove-inline" ng-click="removeFromQuery($index)"></i></td>
+            <td>{{clause.property.name}} {{clause.comparator.name}} "{{clause.value}}"</td>
+        </tr>
+    </table>
+
+    <br>
+
+
+    <div class="col-sm-6" style="padding-left: 0px;">
+        <div class="btn-group" style="width: 100%;">
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" style="width: 100%">
+            Sort By {{sortBy.property}}<span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+              <li ng-repeat="property in options.properties" class="dropdown-item" ng-click="setSortByProperty(property.key)">
+                  {{property.name}}
+              </li>
+          </ul>
+        </div>
+    </div>
+    <div class="col-sm-3" style="padding-left: 0;">
+        <button type="button" class="btn btn-default btn-block" ng-class="{ active: !sortBy.ascending }" ng-click="setSortByAscending(false)"><i class="fa fa-sort-amount-desc"></i></button>
+    </div>
+    <div class="col-sm-3" style="padding-left: 0;">
+        <button type="button" class="btn btn-default btn-block" ng-class="{ active:  sortBy.ascending }" ng-click="setSortByAscending(true)"><i class="fa fa-sort-amount-asc"></i></button>
+    </div>
+    <br><br>
+    
+    <!-- <button class="btn btn-large btn-block btn-primary" ng-click="fetchData()"><i class="fa fa-search"></i> FETCH!</button> -->
+    <!-- <button class="btn btn-large btn-block btn-info" ng-click="fetchCsv()"><i class="fa fa-download"></i>  Download CSV</button> -->
+</div>

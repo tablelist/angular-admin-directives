@@ -1,0 +1,72 @@
+<form class="form-horizontal" id="form-builder" role="form">
+    <div class="form-group" ng-repeat="param in config.params">
+
+        <label class="control-label col-sm-4">
+            {{param.name}} <i ng-show="exists(param.help)" class="fa fa-question-circle help" ng-click="help(param.help)"></i>
+        </label>
+
+        <!-- param.type determines the type of form field to use -->
+        <div class="col-sm-7" ng-switch on="param.type" ng-click="click(param)">
+
+            <!-- Date -->
+            <p ng-switch-when="date" class="form-control-static" ng-disabled="param.editable === false">{{config.object[param.key] | utc | date: EEEE - MM/dd/yyyy}}</p>
+
+            <!-- Date-time -->
+            <p ng-switch-when="date-time" class="form-control-static" ng-disabled="param.editable === false">{{config.object[param.key] | utc | date: 'MM/dd @ h:mma'}}</p>
+
+            <!-- Time -->
+            <input ng-switch-when="time" type="time" class="form-control" ng-disabled="param.editable === false" ng-model="config.object[param.key]">
+
+            <!-- Integer -->
+            <input ng-switch-when="int" type="number" class="form-control" ng-model="config.object[param.key]" value="{{getValue(param)}}" ng-disabled="param.editable === false">
+
+            <!-- Currency -->
+            <div ng-switch-when="currency" class="input-group">
+                <span class="input-group-addon">$</span>
+                <input ng-model="config.object[param.key]" class="form-control" value="{{getValue(param)}}" ng-disabled="param.editable === false">
+            </div>
+
+            <!-- Boolean -->
+            <input ng-switch-when="boolean" type="checkbox" ng-model="config.object[param.key]" ng-disabled="param.editable === false">
+
+            <!-- Select -->
+            <select ng-switch-when="select" ng-model="config.object[param.key]" class="form-control" ng-disabled="param.editable === false">
+                <option value="{{getValue(param)}}">{{getValue(param)}}</option>
+                <option ng-repeat="option in param.options" value="{{option.value}}">{{option.name}}</option>
+            </select>
+
+            <!-- Radio -->
+            <div ng-switch-when="radio" ng-disabled="param.editable === false">
+                <div ng-repeat="value in param.options">
+                    <input  type="radio"
+                            ng-model="config.object[param.key]"
+                            value="{{value}}">
+                    {{value}}
+                    <br />
+                </div>
+            </div>
+
+            <!-- Text Area -->
+            <textarea ng-switch-when="text-area" ng-model="config.object[param.key]" rows="5" class="form-control" value="{{config.object[param.key]}}" ng-disabled="param.editable === false"></textarea>
+
+            <!-- HTML -->
+            <div ng-switch-when="html" text-angular="text-angular" ta-toolbar="{{htmltags}}" ng-model="config.object[param.key]" ng-disabled="param.editable === false"></div>
+
+            <!-- Header -->
+            <p ng-switch-when="header"></p>
+
+            <!-- String (Default Type) -->
+            <input ng-switch-default class="form-control" ng-model="config.object[param.key]" value="{{getValue(param)}}" ng-disabled="param.editable === false">
+
+        </div>
+    </div>
+
+    <div ng-transclude></div>
+
+    <br/>
+</form>
+
+<div class="modal-footer" style="margin-top: 0px; padding-bottom: 5px; ">
+    <button ng-click="save()" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
+    <button ng-click="cancel()" class="btn btn-default">Close</button>
+</div>

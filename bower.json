@@ -1,0 +1,29 @@
+{
+  "name": "admin",
+  "version": "0.1.0",
+  "homepage": "tablelistapp.com",
+  "authors": [
+    "Alex Johnson <alex@tablelistapp.com>",
+    "Andrew Barba <andrew@tablelistapp.com>",
+    "Matt Etre <matt@tablelistapp.com>",
+    "Nathan VanBenschoten <nathan@tablelistapp.com>"
+  ],
+  "description": "Tablelist's Internal Admin Tools",
+  "main": "src/index.html",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "2.1.0",
+    "jquery-ui": "latest",
+    "angular": "1.2.14",
+    "bootstrap": "3.0.3",
+    "textAngular": "latest",
+  }
+}
