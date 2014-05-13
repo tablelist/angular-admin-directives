@@ -4,9 +4,7 @@
 
 var demoApp = angular.module('demoApp', [
   'ngRoute',
-  'demoAnimations',
   'demoControllers',
-  'demoFilters',
   'demoServices'
 ]);
 
