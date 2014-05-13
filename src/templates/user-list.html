@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <ul class="phones">
-    <li ng-repeat="user in users | filter:query | orderBy:orderProp" class="thumbnail user-listing">
+    <li ng-repeat="user in users" class="thumbnail user-listing">
       <p>{{user.firstname}}</p>
       <p>{{user.lastname}}</p>
       <p>{{user.email}}</p>
