@@ -1,5 +1,5 @@
 {
-  "name": "admin",
+  "name": "angular-admin-directives",
   "version": "0.1.0",
   "homepage": "tablelistapp.com",
   "authors": [
@@ -23,7 +23,13 @@
     "jquery": "2.1.0",
     "jquery-ui": "latest",
     "angular": "1.2.14",
+    "angular-animate": "latest",
+    "angular-resource": "latest",
+    "angular-route": "latest",
     "bootstrap": "3.0.3",
-    "textAngular": "latest",
+    "textAngular": "latest"
+  },
+  "resolutions": {
+    "angular": "1.2.16"
   }
 }
