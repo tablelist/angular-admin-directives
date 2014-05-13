@@ -15,4 +15,4 @@ Special thanks to:
 * __Alex Johnson__ [@alexjohnson505](https://github.com/alexjohnson505)
 * __Matt Etre__ [@mattetre](https://github.com/mattetre)
 * __Andrew Barba__ [@AndrewBarba](https://github.com/AndrewBarba)
-* __Nathan VanBenschoten [@nvanbenschoten](https://github.com/nvanbenschoten)
+* __Nathan VanBenschoten__ [@nvanbenschoten](https://github.com/nvanbenschoten)
