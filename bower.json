@@ -27,7 +27,7 @@
     "angular-resource": "latest",
     "angular-route": "latest",
     "bootstrap": "3.0.3",
-    "textAngular": "latest"
+    "textAngular": "latest",
   },
   "resolutions": {
     "angular": "1.2.16"
