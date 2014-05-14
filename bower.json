@@ -22,12 +22,15 @@
   "dependencies": {
     "jquery": "2.1.0",
     "jquery-ui": "latest",
+    "underscore": "latest",
     "angular": "1.2.14",
     "angular-animate": "latest",
     "angular-resource": "latest",
     "angular-route": "latest",
+    "angular-sanitize": "latest",
     "bootstrap": "3.0.3",
-    "textAngular": "latest",
+    "angular-ui-bootstrap": "latest",
+    "textAngular": "latest"
   },
   "resolutions": {
     "angular": "1.2.16"
