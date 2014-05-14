@@ -1,5 +1,5 @@
 angular.module('directives.panel-builder', [])
-.controller('PanelBuilderCtrl', ['$scope', function($scope) {
+.controller('PanelBuilderDirectiveController', ['$scope', function($scope) {
 }])
 
 .directive('panel', function(){
@@ -7,7 +7,7 @@ angular.module('directives.panel-builder', [])
 		restrict: 'E',
 		transclude: true,
 		template: '<div class="panel panel-default"><div class="panel-heading" ng-click="collapsed = !collapsed"><strong>{{name}}</strong></div><div collapse="collapsed"><div class="panel-body"><div ng-transclude></div></div></div></div>',
-		controller: 'PanelBuilderCtrl',
+		controller: 'PanelBuilderDirectiveController',
 		scope: {
 			name: '@',
 		},

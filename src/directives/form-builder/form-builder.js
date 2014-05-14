@@ -4,7 +4,7 @@ angular.module('directives.form-builder', ['textAngular'])
             restrict: 'E',
             transclude: true,
             templateUrl: '/directives/form-builder/form-builder.tpl.html',
-            controller: "FormBuilderCtrl",
+            controller: "FormBuilderDirectiveCtrl",
             scope: {
               config: '='
             },
@@ -47,7 +47,7 @@ angular.module('directives.form-builder', ['textAngular'])
     //    - html        : Text Angular HTML writer
     //    - default     : text field
 
-    .controller('FormBuilderCtrl', ['$scope', function($scope) {
+    .controller('FormBuilderDirectiveCtrl', ['$scope', function($scope) {
 
             // Supported HTML tags in text-angular
             $scope.htmltags = [

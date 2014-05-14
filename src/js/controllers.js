@@ -2,19 +2,31 @@
 
 /* Controllers */
 
-var demoControllers = angular.module('demoControllers', []);
+var app = angular.module('app');
 
-demoControllers.controller('HomeCtrl', ['$scope', 'User',
+app.controller('HomeCtrl', ['$scope', 'User',
   function($scope, User) {
     // Initialize your data
     $scope.users = User.query();
   }]);
 
-demoControllers.controller('FormBuilderCtrl', ['$scope', 'User',
+app.controller('FormBuilderCtrl', ['$scope', 'User',
   function($scope, User) {
 
     // Initialize your data
     $scope.users = User.query();
+
+
+    $scope.users.$promise.then(function (result) {
+
+      // Setup form configuration
+      $scope.configuration = {
+          object: $scope.users[0],
+          onSave: save,
+          onCancel: cancel,
+          params: params
+       }
+    });
 
     // Setup parameters for the form
     var params = [{
@@ -27,14 +39,6 @@ demoControllers.controller('FormBuilderCtrl', ['$scope', 'User',
         name: "E-mail",
         key: "email"
     }]
-
-    // Setup form configuration
-    $scope.configuration = {
-        object: $scope.users[0],
-        onSave: save,
-        onCancel: cancel,
-        params: params
-     }
 
      function save(){
         alert('Save Function Called')
@@ -49,12 +53,12 @@ demoControllers.controller('FormBuilderCtrl', ['$scope', 'User',
      }
   }]);
 
-demoControllers.controller('PanelBuilderCtrl', ['$scope', 'User',
+app.controller('PanelBuilderCtrl', ['$scope', 'User',
   function($scope, User) {
     $scope.users = User.query();
   }]);
 
-demoControllers.controller('QueryBuilderCtrl', ['$scope', 'User',
+app.controller('QueryBuilderCtrl', ['$scope', 'User',
   function($scope, User) {
     $scope.users = User.query();
 
@@ -87,27 +91,36 @@ demoControllers.controller('QueryBuilderCtrl', ['$scope', 'User',
     }
   }]);
 
-demoControllers.controller('DetailsPanelCtrl', ['$scope', 'User',
+app.controller('DetailsPanelCtrl', ['$scope', 'User',
   function($scope, User) {
+
     $scope.users = User.query();
 
-    $scope.configuration = {};
+    $scope.users.$promise.then(function (result) {
+
+      $scope.configuration = {
+          object: $scope.users[0],
+          onSave: save,
+          params: params
+      }
+    });
 
     var params = [{
-        name: "ID",
-        key: "id",
-        editable: false
+        name: "First Name",
+        key: "firstname",
     }, {
-        name: "Name",
-        key: "name",
+        name: "Last Name",
+        key: "lastname",
     }, {
         name: "E-mail",
         key: "email"
     }];
 
-    $scope.configuration = {
-        object: $scope.users[0],
-        onSave: save,
-        params: params
+    function save(){
+      alert('Save Function Called')
+    }
+
+    function cancel(){
+      alert('Cancel Function Called')
     }
   }]);

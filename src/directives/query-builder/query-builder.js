@@ -26,7 +26,7 @@ angular.module('directives.query-builder', [])
         return {
             restrict: 'E',
             templateUrl: '/directives/query-builder/query-builder.tpl.html',
-            controller: "QueryBuilderCtrl",
+            controller: "QueryBuilderDirectiveCtrl",
             scope: {
               config: '=',
             },
@@ -49,7 +49,7 @@ angular.module('directives.query-builder', [])
      *  Controller
      * ========================================================================= */
 
-    .controller('QueryBuilderCtrl', ['$scope', 'QueryBuilderService', '$location', 'DEFAULTS', function($scope, QueryBuilderService, $location, DEFAULTS) {
+    .controller('QueryBuilderDirectiveCtrl', ['$scope', 'QueryBuilderService', '$location', 'DEFAULTS', function($scope, QueryBuilderService, $location, DEFAULTS) {
         // TODO: Abstract
         // $scope.debug = TL.config.env != 'PROD';
 

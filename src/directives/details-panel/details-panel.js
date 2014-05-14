@@ -1,5 +1,7 @@
 angular.module('directives.details-panel', [])
-.controller('DetailsPanelCtrl', ['$scope', function($scope) {
+.controller('DetailsPanelDirectiveController', ['$scope', function($scope) {
+
+    console.log($scope.config);
 
     $scope.getValue = function(param) {
         var object = $scope.config.object;
@@ -40,7 +42,7 @@ angular.module('directives.details-panel', [])
                         <!-- Non-editable --><div class="col-md-6" ng-switch-when="non-editable">{{getValue(param)}}</div>\
                         <!-- Default (String) --><div class="col-md-6" ng-switch-default>{{getValue(param)}}</div>\
                     </div></div></div></div>',
-		controller: 'DetailsPanelCtrl',
+		controller: 'DetailsPanelDirectiveController',
 		scope: {
 			name: '@',
 			config:  '=',

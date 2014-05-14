@@ -2,9 +2,8 @@
 
 /* App Module */
 
-var demoApp = angular.module('demoApp', [
+var app = angular.module('app', [
   'ngRoute',
-  'demoControllers',
   'demoServices',
   'directives.form-builder',
   'directives.panel-builder',
@@ -13,7 +12,7 @@ var demoApp = angular.module('demoApp', [
   'textAngular'
 ]);
 
-demoApp.config(['$routeProvider',
+app.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
       when('/users', {
