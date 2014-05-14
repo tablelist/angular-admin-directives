@@ -1,4 +1,4 @@
-angular.module('directives.query-builder', ['services.helper'])
+angular.module('directives.query-builder', [])
 
     /* =========================================================================
      *  Directive
@@ -10,8 +10,8 @@ angular.module('directives.query-builder', ['services.helper'])
      *   fetchData: function used to fetch data
      *   fetchCsv: function user to fetch csv data
      *
-     *   fetchDataCallback (optional): function to run when data is fetched 
-     *   defaultQuery (optional): 
+     *   fetchDataCallback (optional): function to run when data is fetched
+     *   defaultQuery (optional):
      *   {
      *      key: name of key
      *      value: value to query
@@ -49,8 +49,9 @@ angular.module('directives.query-builder', ['services.helper'])
      *  Controller
      * ========================================================================= */
 
-    .controller('QueryBuilderCtrl', ['$scope', 'Alert', 'QueryBuilderService', 'Helper', '$location', 'DEFAULTS', function($scope, Alert, QueryBuilderService, Helper, $location, DEFAULTS) {
-        $scope.debug = TL.config.env != 'PROD';
+    .controller('QueryBuilderCtrl', ['$scope', 'QueryBuilderService', '$location', 'DEFAULTS', function($scope, QueryBuilderService, $location, DEFAULTS) {
+        // TODO: Abstract
+        // $scope.debug = TL.config.env != 'PROD';
 
         // Built mongo query
         $scope.mongoQuery = {};
@@ -76,6 +77,7 @@ angular.module('directives.query-builder', ['services.helper'])
 
         // query builder configuration
         var config = $scope.config;
+        console.log(DEFAULTS)
         var properties = _.union(DEFAULTS.properties, config.properties);
         var comparators = QueryBuilderService.getDefaultComparators();
 
@@ -128,12 +130,12 @@ angular.module('directives.query-builder', ['services.helper'])
         }
 
         function updateTextField (property) {
-            $scope.hideValueTextBox = property && 
+            $scope.hideValueTextBox = property &&
                 (property.hideText || property.dataType == 'boolean' || property.dataType == 'ref')
         }
 
         $scope.lastWeek = function() {
-            var todayDiary = Helper.todayDate();
+            var todayDiary = todayDate();
             var lastSunday = moment(todayDiary).day(-7) // last sunday = 0 - 7
             var thisMonday = moment(todayDiary).day(1) // this monday = 1
             addDateAfter(lastSunday.toDate());
@@ -143,7 +145,7 @@ angular.module('directives.query-builder', ['services.helper'])
         }
 
         $scope.thisWeek = function() {
-            var todayDiary = Helper.todayDate();
+            var todayDiary = todayDate();
             var thisSunday = moment(todayDiary).day(0) // this sunday = 0
             var nextMonday = moment(todayDiary).day(8) // next monday = 1 + 7
             addDateAfter(thisSunday.toDate());
@@ -177,7 +179,7 @@ angular.module('directives.query-builder', ['services.helper'])
             var existingDate = false;
             angular.forEach($scope.query, function (queryItem) {
                 var checkName = (before) ? "before" : "after"
-                if (queryItem.comparator && 
+                if (queryItem.comparator &&
                     queryItem.comparator.dataType === 'date' &&
                     queryItem.comparator.name === checkName) {
                     // update it
@@ -194,7 +196,7 @@ angular.module('directives.query-builder', ['services.helper'])
             $scope.query.push($scope.currentClause);
             // Reset clause in form
             $scope.currentClause = {};
-            
+
             setQuery($scope.query, $scope.sortBy);
         }
 
@@ -263,6 +265,21 @@ angular.module('directives.query-builder', ['services.helper'])
             return comparators;
         }
 
+        function todayDate () {
+            var utcDate = moment.utc();
+
+            if (utcDate.hours() < 6) {
+                utcDate.date(utcDate.date() -1);
+            }
+            // utcDate = moment([utcDate.year(), utcDate.months])
+            utcDate.hours(6)
+            utcDate.minutes(0);
+            utcDate.seconds(0);
+            utcDate.milliseconds(0);
+
+            return utcDate;
+        }
+
     }])
 
     /* =========================================================================
@@ -270,7 +287,7 @@ angular.module('directives.query-builder', ['services.helper'])
      * ========================================================================= */
 
     .service('QueryBuilderService', function() {
-    
+
         this.buildMongoQuery = function(queryData) {
             var _this = this;
 
@@ -422,5 +439,5 @@ angular.module('directives.query-builder', ['services.helper'])
 
             return date;
         }
-        
+
     })

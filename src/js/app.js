@@ -5,7 +5,11 @@
 var demoApp = angular.module('demoApp', [
   'ngRoute',
   'demoControllers',
-  'demoServices'
+  'demoServices',
+  'directives.form-builder',
+  'directives.panel-builder',
+  'directives.query-builder',
+  'textAngular'
 ]);
 
 demoApp.config(['$routeProvider',
@@ -13,7 +17,7 @@ demoApp.config(['$routeProvider',
     $routeProvider.
       when('/users', {
         templateUrl: 'templates/user-list.html',
-        controller: 'UserListCtrl'
+        controller: 'HomeCtrl'
       }).
       when('/form-builder', {
         templateUrl: 'templates/form-builder.html',

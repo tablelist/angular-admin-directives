@@ -1,9 +1,9 @@
-angular.module('directives.form-builder', ['textAngular', 'ui.bootstrap'])
+angular.module('directives.form-builder', ['textAngular'])
     .directive('formBuilder', function() {
         return {
             restrict: 'E',
             transclude: true,
-            templateUrl: '/common/directives/form-builder/form-builder.tpl.html',
+            templateUrl: '/directives/form-builder/form-builder.tpl.html',
             controller: "FormBuilderCtrl",
             scope: {
               config: '='
@@ -47,7 +47,7 @@ angular.module('directives.form-builder', ['textAngular', 'ui.bootstrap'])
     //    - html        : Text Angular HTML writer
     //    - default     : text field
 
-    .controller('FormBuilderCtrl', ['$scope', 'Alert', function($scope, Alert) {
+    .controller('FormBuilderCtrl', ['$scope', function($scope) {
 
             // Supported HTML tags in text-angular
             $scope.htmltags = [
@@ -96,7 +96,8 @@ angular.module('directives.form-builder', ['textAngular', 'ui.bootstrap'])
 
             // Open help dialog to display additional information to user
             $scope.help = function(msg){
-                Alert.help(msg)
+                // Alert.help(msg)
+                alert(msg)
             }
 
             // Execute designated save function
@@ -108,4 +109,16 @@ angular.module('directives.form-builder', ['textAngular', 'ui.bootstrap'])
             $scope.cancel = function(){
                 $scope.config.onCancel();
             }
-    }]);
+    }])
+
+    // We'll need a filter for fixing UTC dates
+    .filter('utc', function() {
+        return function(date) {
+            if (date) {
+                if(angular.isNumber(date) || typeof date == 'string') {
+                    date = new Date(date);
+                }
+                return new Date(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(),  date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds());
+            }
+        }
+    })

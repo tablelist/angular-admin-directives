@@ -6,7 +6,7 @@ angular.module('directives.panel-builder', [])
 	return {
 		restrict: 'E',
 		transclude: true,
-		templateUrl: '/common/directives/panel-builder/panel-builder.tpl.html',
+		template: '<div class="panel panel-default"><div class="panel-heading" ng-click="collapsed = !collapsed"><strong>{{name}}</strong></div><div collapse="collapsed"><div class="panel-body"><div ng-transclude></div></div></div></div>',
 		controller: 'PanelBuilderCtrl',
 		scope: {
 			name: '@',

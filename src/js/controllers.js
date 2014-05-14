@@ -4,15 +4,49 @@
 
 var demoControllers = angular.module('demoControllers', []);
 
-demoControllers.controller('UserListCtrl', ['$scope', 'User',
+demoControllers.controller('HomeCtrl', ['$scope', 'User',
   function($scope, User) {
+    // Initialize your data
     $scope.users = User.query();
   }]);
 
-
 demoControllers.controller('FormBuilderCtrl', ['$scope', 'User',
   function($scope, User) {
+
+    // Initialize your data
     $scope.users = User.query();
+
+    // Setup parameters for the form
+    var params = [{
+        name: "First Name",
+        key: "firstname",
+    }, {
+        name: "Last Name",
+        key: "lastname",
+    }, {
+        name: "E-mail",
+        key: "email"
+    }]
+
+    // Setup form configuration
+    $scope.configuration = {
+        object: $scope.users[0],
+        onSave: save,
+        onCancel: cancel,
+        params: params
+     }
+
+     function save(){
+        alert('Save Function Called')
+     }
+
+     function cancel(){
+        alert('Cancel Function Called')
+     }
+
+     function customOnClickFunction(){
+        alert('This item can do something when clicked')
+     }
   }]);
 
 demoControllers.controller('PanelBuilderCtrl', ['$scope', 'User',
@@ -29,14 +63,3 @@ demoControllers.controller('DetailsPanelCtrl', ['$scope', 'User',
   function($scope, User) {
     $scope.users = User.query();
   }]);
-
-// demoControllers.controller('PhoneDetailCtrl', ['$scope', '$routeParams', 'Phone',
-//   function($scope, $routeParams, Phone) {
-//     $scope.phone = Phone.get({phoneId: $routeParams.phoneId}, function(phone) {
-//       $scope.mainImageUrl = phone.images[0];
-//     });
-
-//     $scope.setImage = function(imageUrl) {
-//       $scope.mainImageUrl = imageUrl;
-//     }
-//   }]);
