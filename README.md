@@ -43,8 +43,8 @@ Special thanks to:
 
 #### [Bootstrap](https://github.com/twbs/bootstrap)
 
-##### Fake User data from generatedata.com.
-Note: users.json is a great way to show some example data. I highly recommend using an alternate solution in a live environment.
+#### [Generatedata.com](http://generatedata.com)*
+*Note: Users.json is a randomly generated set of fake user data for demonstration purposes. I advice not to handle data this way in a production environment.
 
 ## Contributors:
 
