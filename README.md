@@ -3,6 +3,24 @@ angular-admin-directives
 
 A collection of Angular Directives built for use in Tablelist's Internal Admin Tools.
 
+## Directives
+
+### Form Builder
+
+Form Builder takes in a configuration array, and generates the HTML for a bootstrap horizontal form. When editing data, we encountered a ton of repetition between our different types of data. In classic 'DRY' style, we abstracted the form construction logic out of the view templates, and into it's own directive.
+
+### Panel Builder
+
+Panel builder used ng-transclude to render the provided HTML into bootstrap panels. For sites with a variety of panels, we found panel this directive to be a simple way of reducing redundant HTML in templates
+
+### Query Builder
+
+Query Builder is a GUI tool for building complex MongoDB queries. By selecting parameters and comparators from dropdowns, query builder empowers our sales and marketing team to query our database for specific data.
+
+### Details Panel
+
+Details Panel takes in a set of data, and renders the data in a format for the user to read. Reduces repetition in templating, and allows us to display various forms of data with very little HTML.
+
 ## Setup
 
 Just interested in the directives? Grab them from the /src folder.
