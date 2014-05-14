@@ -1,5 +1,5 @@
 angular.module('directives.details-panel', [])
-.controller('DetailsPanelCtrl', ['$scope', 'Alert', function($scope, Alert) {
+.controller('DetailsPanelCtrl', ['$scope', function($scope) {
 
     $scope.getValue = function(param) {
         var object = $scope.config.object;
@@ -27,7 +27,19 @@ angular.module('directives.details-panel', [])
 .directive('detailsPanel', function(){
 	return {
 		restrict: 'E',
-		templateUrl: '/common/directives/details-panel/details-panel.tpl.html',
+		template: '<div class="panel panel-default"> \
+            <div class="panel-heading"><strong>{{name}}</strong></div>\
+            <div class="panel-body"><div class="row" ng-repeat="param in config.params">\
+                    <div class="col-md-5"><strong>{{param.name}}</strong></div>\
+                    <div ng-switch on="param.type" ng-click="click(param)" ng-class="{ link: param.onClick }">\
+                        <!-- Currency --><div class="col-md-6" ng-switch-when="currency">{{getValue(param) | currency}}</div>\
+                        <!-- Date --><div class="col-md-6" ng-switch-when="date">{{getValue(param) | utc | date: "EEEE - MM/dd/yyyy"}}</div>\
+                        <!-- Time --><div class="col-md-6" ng-switch-when="time">{{getValue(param) | utc | date: "h:mma"}}</div>\
+                        <!-- Array --><div class="col-md-6" ng-switch-when="array"><span ng-repeat="item in config.object[param.value]">{{item}}</span></div>\
+                        <!-- Array --><div class="col-md-6" ng-switch-when="html">Read on the right</div>\
+                        <!-- Non-editable --><div class="col-md-6" ng-switch-when="non-editable">{{getValue(param)}}</div>\
+                        <!-- Default (String) --><div class="col-md-6" ng-switch-default>{{getValue(param)}}</div>\
+                    </div></div></div></div>',
 		controller: 'DetailsPanelCtrl',
 		scope: {
 			name: '@',

@@ -9,6 +9,7 @@ var demoApp = angular.module('demoApp', [
   'directives.form-builder',
   'directives.panel-builder',
   'directives.query-builder',
+  'directives.details-panel',
   'textAngular'
 ]);
 

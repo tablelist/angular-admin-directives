@@ -57,9 +57,57 @@ demoControllers.controller('PanelBuilderCtrl', ['$scope', 'User',
 demoControllers.controller('QueryBuilderCtrl', ['$scope', 'User',
   function($scope, User) {
     $scope.users = User.query();
+
+    $scope.currentQuery = {};
+    $scope.currentSortBy = '-created';
+    $scope.queryTotal = UserService.queryTotal({}, '-created');
+
+    // Configure Query Directive
+    $scope.queryConfig = {
+        properties: getQueryProperties(),
+        comparators: getExtraComparators(),
+        refComparators: [{
+            resources: $scope.cities,
+            refType: "city"
+        }],
+        // callback to run when query changes
+        queryUpdatedCallback: function (mongoQuery, sortBy) {
+            $scope.currentQuery =  mongoQuery;
+            $scope.currentSortBy = sortBy;
+            $scope.users = UserService.query(mongoQuery, sortBy);
+            $scope.queryTotal = UserService.queryTotal(mongoQuery, sortBy);
+        }
+    }
+
+    // Configure Export Directive
+    $scope.exportConfig = {
+        exportUrl: function() {
+            return UserService.exportUrl($scope.currentQuery, $scope.currentSortBy);
+        }
+    }
   }]);
 
 demoControllers.controller('DetailsPanelCtrl', ['$scope', 'User',
   function($scope, User) {
     $scope.users = User.query();
+
+    $scope.configuration = {};
+
+    var params = [{
+        name: "ID",
+        key: "id",
+        editable: false
+    }, {
+        name: "Name",
+        key: "name",
+    }, {
+        name: "E-mail",
+        key: "email"
+    }];
+
+    $scope.configuration = {
+        object: $scope.users[0],
+        onSave: save,
+        params: params
+    }
   }]);
