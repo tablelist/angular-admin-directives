@@ -3,7 +3,7 @@ angular.module('directives.form-builder', ['textAngular'])
         return {
             restrict: 'E',
             transclude: true,
-            templateUrl: '/directives/form-builder/form-builder.tpl.html',
+            templateUrl: '/js/directives/form-builder/form-builder.tpl.html',
             controller: "FormBuilderDirectiveCtrl",
             scope: {
               config: '='

@@ -39,3 +39,19 @@ app.config(['$routeProvider',
         redirectTo: '/users'
       });
   }]);
+
+app.run(['$rootScope', 'User',
+  function ($rootScope, User) {
+
+    // We'll be using our demo user list on almost
+    // every page. For the sake of demo simplicity,
+    // let's throw it into root scope.
+    $rootScope.users = User.query();
+
+  }])
+
+// Home Controller
+app.controller('HomeCtrl', ['$scope',
+  function($scope) {
+
+  }]);

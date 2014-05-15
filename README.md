@@ -3,6 +3,12 @@ angular-admin-directives
 
 A collection of Angular Directives built for use in Tablelist's Internal Admin Tools.
 
+
+## To-Do:
+
+Extract each directive + dependencies into it's own module
+Show/Preview resulting Mongo query from Query Builder
+
 ## Directives
 
 ### Form Builder
