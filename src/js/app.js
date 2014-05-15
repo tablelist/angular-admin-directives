@@ -17,7 +17,6 @@ app.config(['$routeProvider',
     $routeProvider.
       when('/users', {
         templateUrl: 'templates/user-list.html',
-        controller: 'HomeCtrl'
       }).
       when('/form-builder', {
         templateUrl: 'templates/form-builder.html',
@@ -25,7 +24,6 @@ app.config(['$routeProvider',
       }).
       when('/panel-builder', {
         templateUrl: 'templates/panel-builder.html',
-        controller: 'PanelBuilderCtrl'
       }).
       when('/query-builder', {
         templateUrl: 'templates/query-builder.html',
@@ -49,9 +47,3 @@ app.run(['$rootScope', 'User',
     $rootScope.users = User.query();
 
   }])
-
-// Home Controller
-app.controller('HomeCtrl', ['$scope',
-  function($scope) {
-
-  }]);
