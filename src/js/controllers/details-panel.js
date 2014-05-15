@@ -11,7 +11,6 @@ app.controller('DetailsPanelCtrl', ['$scope',
           params: params
       }
     });
-
     var params = [{
         name: "First Name",
         key: "firstname",
@@ -21,7 +20,32 @@ app.controller('DetailsPanelCtrl', ['$scope',
     }, {
         name: "E-mail",
         key: "email"
-    }];
+    }, {
+        name: "City",
+        key: "city",
+        editable: false,
+    },{
+        name: "PIN",
+        key: "pin",
+        type: "int",
+    },{
+        name: "Location",
+        key: "location",
+        editable: false,
+    },{
+        name: "Credit",
+        key: "credit",
+        type: "currency"
+    },{
+        name: "Created",
+        key: "created",
+
+    },{
+        name: "Updated",
+        key: "updated",
+        type: "time"
+    }]
+
 
     function save(){
       alert('Save Function Called')
