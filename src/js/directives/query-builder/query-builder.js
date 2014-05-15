@@ -25,7 +25,7 @@ angular.module('directives.query-builder', [])
     .directive('queryBuilder', function() {
         return {
             restrict: 'E',
-            templateUrl: '/directives/query-builder/query-builder.tpl.html',
+            templateUrl: '/js/directives/query-builder/query-builder.tpl.html',
             controller: "QueryBuilderDirectiveCtrl",
             scope: {
               config: '=',

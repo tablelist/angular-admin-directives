@@ -11,6 +11,7 @@ app.controller('DetailsPanelCtrl', ['$scope',
           params: params
       }
     });
+
     var params = [{
         name: "First Name",
         key: "firstname",

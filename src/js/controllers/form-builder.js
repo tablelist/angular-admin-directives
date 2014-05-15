@@ -11,7 +11,7 @@ app.controller('FormBuilderCtrl', ['$scope',
           onSave: save,
           onCancel: cancel,
           params: params
-       }
+     }
     });
 
     // Setup parameters for the form

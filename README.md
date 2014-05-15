@@ -27,7 +27,7 @@ Panel builder used ng-transclude to render the provided HTML into bootstrap pane
 
 Query Builder is a GUI tool for building complex MongoDB queries. By selecting parameters and comparators from dropdowns, query builder empowers our sales and marketing team to query our database for specific data.
 
-* requires: bootstrap css, underscore
+* requires: bootstrap css, font awesome CSS icons, underscore.js
 
 ### Details Panel
 
