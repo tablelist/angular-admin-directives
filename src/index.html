@@ -2,10 +2,12 @@
 <html lang="en" ng-app="app">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" charset="utf-8" />
   <title>Angular Admin Portal Directives</title>
 
   <!-- CSS -->
   <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" media="screen">
+  <link href="/bower_components/coffin/stylesheets/coffin.css" rel="stylesheet" media="screen">
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
   <!-- Vendor Scripts -->
@@ -16,7 +18,8 @@
   <script src="/bower_components/angular-resource/angular-resource.js"></script>
   <script src="/bower_components/angular-route/angular-route.js"></script>
   <script src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
-  <script src="/bower_components/textAngular/textAngular.min.js"></script>
+  <script src="/bower_components/textAngular/dist/textAngular.min.js"></script>
+  <script src="/bower_components/coffin/javascript/coffin.js"></script>
 
   <!-- Angular App Scripts -->
   <script src="/js/app.js"></script>
@@ -35,9 +38,15 @@
 
 </head>
 <body>
-<div ng-include="'/templates/header.html'"></div>
-  <div class="view-container" style="margin: 20px;">
-    <div ng-view class="view-frame"></div>
+  <div class="coffin">
+    <div ng-include="'/templates/header.html'"></div>
+  </div>
+   <div class="page"><!-- Defines a coffin stage -->
+     <div class="container">
+         <div class="view-container">
+            <div ng-view class="view-frame"></div>
+        </div>
+     </div>
   </div>
 </body>
 </html>

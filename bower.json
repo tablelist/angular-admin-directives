@@ -30,7 +30,8 @@
     "angular-sanitize": "latest",
     "bootstrap": "3.0.3",
     "angular-ui-bootstrap": "latest",
-    "textAngular": "latest"
+    "textAngular": "latest",
+    "coffin": "https://github.com/alexjohnson505/coffin.git"
   },
   "resolutions": {
     "angular": "1.2.16"
