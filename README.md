@@ -47,13 +47,23 @@ Just interested in the directives? Grab them from the /src/directives folder.
 
 The following steps will instruct how to setup the demo site.
 
+Download npm dependencies:
+
 ```
 npm install
 ```
 
+Install bower for web package management:
+
 ```
-sudp npm install -g bower
+sudo npm install -g bower
 bower install
+```
+
+start the local server
+
+```
+node server.js
 ```
 
 ## Special Thanks
