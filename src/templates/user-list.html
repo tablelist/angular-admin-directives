@@ -1,17 +1,28 @@
 <h1>Sample User Data</h1>
 
 <div class="container-fluid">
-  <ul class="phones">
-    <li ng-repeat="user in users" class="thumbnail user-listing">
-      <p>{{user.firstname}}</p>
-      <p>{{user.lastname}}</p>
-      <p>{{user.email}}</p>
-      <p>{{user.city}}</p>
-      <p>{{user.pin}}</p>
-      <p>{{user.location}}</p>
-      <p>{{user.credit | currency}}</p>
-      <p>{{user.created | date:'dd/MM/yyyy HH:mm'}}</p>
-      <p>{{user.updated | date:'dd/MM/yyyy HH:mm'}}</p>
-    </li>
-  </ul>
+  <table class="table table-striped">
+    <tr>
+      <th>First</th>
+      <th>Last</th>
+      <th>Email</th>
+      <th>City</th>
+      <th>PIN</th>
+      <th>Location</th>
+      <th>Credit</th>
+      <th>Date Created</th>
+      <th>Date Updated</th>
+    </tr>
+    <tr ng-repeat="user in users">
+        <td>{{user.firstname}}</td>
+        <td>{{user.lastname}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.city}}</td>
+        <td>{{user.pin}}</td>
+        <td>{{user.location}}</td>
+        <td>{{user.credit | currency}}</td>
+        <td>{{user.created | date:'dd/MM/yyyy HH:mm'}}</td>
+        <td>{{user.updated | date:'dd/MM/yyyy HH:mm'}}</td>
+    </tr>
+  </table>
 </div>
